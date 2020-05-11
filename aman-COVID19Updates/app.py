@@ -1,5 +1,5 @@
-from flask import Flask, render_template, url_for, request, redirect, jsonify
-import COVID19Py
+from flask import Flask, render_template, url_for,request, redirect, jsonify
+import COVID19Py, requests, json
 
 
 app = Flask(__name__)
@@ -12,7 +12,15 @@ def updates():
         option = request.form['op']
         covid19 = COVID19Py.COVID19()
         location = covid19.getLocationByCountryCode({option})
-        return jsonify(location)
+        location_user = json.dumps(location)
+        data = json.loads(location_user)
+        return jsonify(data)
+        
+
+        
+
+
+        
 
        
 
