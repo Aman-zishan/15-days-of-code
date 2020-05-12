@@ -13,23 +13,13 @@ def updates():
         covid19 = COVID19Py.COVID19()
         location = covid19.getLocationByCountryCode({option})
         location_user = json.dumps(location)
-        data = json.loads(location_user)
-        return jsonify(data)
-        
-
-        
-
-
-        
-
-       
-
+        data1 = json.loads(location_user)
+        return render_template("result.html",data = data1 )
         
         
 
         
-        
-        
+
 
 if __name__ == "__main__": 
         app.run(debug=True)
