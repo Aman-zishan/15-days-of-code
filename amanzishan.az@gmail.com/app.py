@@ -10,16 +10,14 @@ def home():
 @app.route('/updates', methods=["GET", "POST"])
 def updates():
         option = request.form['op']
-        covid19 = COVID19Py.COVID19()
+        covid19 = COVID19Py.COVID19(data_source="nyt")
         location = covid19.getLocationByCountryCode({option})
         location_user = json.dumps(location)
-        data1 = json.loads(location_user)
-        return render_template("result.html",data = data1 )
+        data = json.loads(location_user)
+        return render_template("result.html",data = data )
         
         
 
         
-
-
 if __name__ == "__main__": 
         app.run(debug=True)
